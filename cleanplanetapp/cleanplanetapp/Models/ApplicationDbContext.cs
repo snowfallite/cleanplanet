@@ -30,14 +30,14 @@ namespace cleanplanetapp
         {
             modelBuilder.HasDefaultSchema("public");
 
-            // Composite keys
+   
             modelBuilder.Entity<ServiceMaterial>()
                 .HasKey(sm => new { sm.ServiceId, sm.MaterialId });
 
             modelBuilder.Entity<ShiftEmployee>()
                 .HasKey(se => new { se.ShiftId, se.EmployeeId });
 
-            // Table names mapping
+          
             modelBuilder.Entity<Position>().ToTable("Positions");
             modelBuilder.Entity<Employee>().ToTable("Employees");
             modelBuilder.Entity<Shift>().ToTable("Shifts");
@@ -52,7 +52,7 @@ namespace cleanplanetapp
             modelBuilder.Entity<ShiftEmployee>().ToTable("ShiftEmployees");
             modelBuilder.Entity<PartnerRatingHistory>().ToTable("PartnersRatingHistory");
 
-            // Column names mapping
+      
             modelBuilder.Entity<Position>()
                 .Property(p => p.PositionId).HasColumnName("position_id");
             modelBuilder.Entity<Position>()
@@ -109,6 +109,11 @@ namespace cleanplanetapp
                 .Property(s => s.TimeNormHours).HasColumnName("time_norm_hours");
             modelBuilder.Entity<Service>()
                 .Property(s => s.RequiredPositionId).HasColumnName("required_position_id");
+            modelBuilder.Entity<Service>()
+                .HasRequired(s => s.RequiredPosition)
+                .WithMany(p => p.Services)
+                .HasForeignKey(s => s.RequiredPositionId);
+
 
             modelBuilder.Entity<Supplier>()
                 .Property(s => s.SupplierId).HasColumnName("supplier_id");
@@ -136,7 +141,10 @@ namespace cleanplanetapp
                 .Property(sm => sm.MaterialId).HasColumnName("material_id");
             modelBuilder.Entity<ServiceMaterial>()
                 .Property(sm => sm.ConsumptionNorm).HasColumnName("consumption_norm");
-
+            modelBuilder.Entity<ServiceMaterial>()
+                .Property(sm => sm.OverusePercent).HasColumnName("overuse_percent");
+            modelBuilder.Entity<ServiceMaterial>()
+                .Property(sm => sm.ServiceCoefficient).HasColumnName("service_coefficient");
             modelBuilder.Entity<Partner>()
                 .Property(p => p.PartnerId).HasColumnName("partner_id");
 
@@ -163,6 +171,8 @@ namespace cleanplanetapp
                 .Property(o => o.ClientId).HasColumnName("client_id");
             modelBuilder.Entity<Order>()
                 .Property(o => o.ServiceId).HasColumnName("service_id");
+            modelBuilder.Entity<Order>()
+                .Property(o => o.Quantity).HasColumnName("quantity");
             modelBuilder.Entity<Order>()
                 .Property(o => o.ShiftId).HasColumnName("shift_id");
             modelBuilder.Entity<Order>()
@@ -215,7 +225,6 @@ namespace cleanplanetapp
         }
     }
 
-    // Position model
     public class Position
     {
         [Key]
@@ -223,12 +232,11 @@ namespace cleanplanetapp
         public string PositionName { get; set; }
         public decimal HourlyRate { get; set; }
 
-        // Navigation properties
+      
         public virtual ICollection<Employee> Employees { get; set; }
         public virtual ICollection<Service> Services { get; set; }
     }
 
-    // Employee model
     public class Employee
     {
         [Key]
@@ -239,7 +247,7 @@ namespace cleanplanetapp
         public string Username { get; set; }
         public string PasswordHash { get; set; }
 
-        // Navigation properties
+
         public virtual Position Position { get; set; }
         public virtual ICollection<Shift> Shifts { get; set; }
         public virtual ICollection<Delivery> Deliveries { get; set; }
@@ -247,7 +255,7 @@ namespace cleanplanetapp
         public virtual ICollection<ShiftEmployee> ShiftEmployees { get; set; }
     }
 
-    // Shift model
+
     public class Shift
     {
         [Key]
@@ -259,13 +267,13 @@ namespace cleanplanetapp
         public string Status { get; set; }
         public decimal? HoursWorked { get; set; }
 
-        // Navigation properties
+
         public virtual Employee Employee { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<ShiftEmployee> ShiftEmployees { get; set; }
     }
 
-    // Client model
+
     public class Client
     {
         [Key]
@@ -274,11 +282,11 @@ namespace cleanplanetapp
         public string Contact { get; set; }
         public DateTime RegistrationDate { get; set; }
 
-        // Navigation properties
+
         public virtual ICollection<Order> Orders { get; set; }
     }
 
-    // Service model
+
     public class Service
     {
         [Key]
@@ -289,13 +297,13 @@ namespace cleanplanetapp
         public decimal TimeNormHours { get; set; }
         public int RequiredPositionId { get; set; }
 
-        // Navigation properties
+
         public virtual Position RequiredPosition { get; set; }
         public virtual ICollection<ServiceMaterial> ServiceMaterials { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }
 
-    // Supplier model
+
     public class Supplier
     {
         [Key]
@@ -303,12 +311,11 @@ namespace cleanplanetapp
         public string Name { get; set; }
         public string Contact { get; set; }
 
-        // Navigation properties
+
         public virtual ICollection<Material> Materials { get; set; }
         public virtual ICollection<Delivery> Deliveries { get; set; }
     }
 
-    // Material model
     public class Material
     {
         [Key]
@@ -319,25 +326,30 @@ namespace cleanplanetapp
         public string Unit { get; set; }
         public int SupplierId { get; set; }
 
-        // Navigation properties
+
         public virtual Supplier Supplier { get; set; }
         public virtual ICollection<ServiceMaterial> ServiceMaterials { get; set; }
         public virtual ICollection<Delivery> Deliveries { get; set; }
     }
 
-    // ServiceMaterial model (junction table)
+
     public class ServiceMaterial
     {
         public int ServiceId { get; set; }
         public int MaterialId { get; set; }
         public decimal ConsumptionNorm { get; set; }
 
-        // Navigation properties
+        public decimal OverusePercent { get; set; }
+
+     
+        public decimal ServiceCoefficient { get; set; }
+
+  
         public virtual Service Service { get; set; }
         public virtual Material Material { get; set; }
     }
 
-    // Partner model
+
     public class Partner
     {
         [Key]
@@ -353,12 +365,12 @@ namespace cleanplanetapp
         public decimal Commission { get; set; }
         public decimal Rating { get; set; }
 
-        // Navigation properties
+     
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<PartnerRatingHistory> PartnerRatingHistories { get; set; }
     }
 
-    // Order model
+
     public class Order
     {
         [Key]
@@ -373,14 +385,16 @@ namespace cleanplanetapp
         public decimal CostPrice { get; set; }
         public decimal FinalPrice { get; set; }
 
-        // Navigation properties
+        public int Quantity { get; set; }
+
+    
         public virtual Client Client { get; set; }
         public virtual Service Service { get; set; }
         public virtual Shift Shift { get; set; }
         public virtual Partner Partner { get; set; }
     }
 
-    // Delivery model
+
     public class Delivery
     {
         [Key]
@@ -391,24 +405,24 @@ namespace cleanplanetapp
         public DateTime DeliveryDate { get; set; }
         public int EmployeeId { get; set; }
 
-        // Navigation properties
+
         public virtual Supplier Supplier { get; set; }
         public virtual Material Material { get; set; }
         public virtual Employee Employee { get; set; }
     }
 
-    // ShiftEmployee model (junction table)
+
     public class ShiftEmployee
     {
         public int ShiftId { get; set; }
         public int EmployeeId { get; set; }
 
-        // Navigation properties
+     
         public virtual Shift Shift { get; set; }
         public virtual Employee Employee { get; set; }
     }
 
-    // PartnerRatingHistory model
+
     public class PartnerRatingHistory
     {
         [Key]
@@ -422,7 +436,7 @@ namespace cleanplanetapp
         public int ChangedBy { get; set; }
         public string Reason { get; set; }
 
-        // Navigation properties
+
       
         public virtual Partner Partner { get; set; }
 

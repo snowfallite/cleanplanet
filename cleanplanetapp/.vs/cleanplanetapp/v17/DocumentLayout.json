@@ -3,36 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|c:\\users\\root\\desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\forms\\manager\\partnerdetails.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|solutionrelative:cleanplanetapp\\forms\\manager\\partnerdetails.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{E696701C-3D39-47E8-9B7B-3D43025DCC9C}|cleanplanetapp.Tests\\cleanplanetapp.Tests.csproj|c:\\users\\root\\desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp.tests\\checksvcfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E696701C-3D39-47E8-9B7B-3D43025DCC9C}|cleanplanetapp.Tests\\cleanplanetapp.Tests.csproj|solutionrelative:cleanplanetapp.tests\\checksvcfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|c:\\users\\root\\desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\forms\\manager\\partnerdetails.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|solutionrelative:cleanplanetapp\\forms\\manager\\partnerdetails.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E696701C-3D39-47E8-9B7B-3D43025DCC9C}|cleanplanetapp.Tests\\cleanplanetapp.Tests.csproj|c:\\users\\root\\desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp.tests\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{E696701C-3D39-47E8-9B7B-3D43025DCC9C}|cleanplanetapp.Tests\\cleanplanetapp.Tests.csproj|solutionrelative:cleanplanetapp.tests\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|c:\\users\\root\\desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\forms\\manager\\viewhistory.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|solutionrelative:cleanplanetapp\\forms\\manager\\viewhistory.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|c:\\users\\root\\desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\forms\\manager\\viewhistory.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|solutionrelative:cleanplanetapp\\forms\\manager\\viewhistory.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\forms\\connect.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|solutionrelative:cleanplanetapp\\forms\\connect.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|c:\\users\\root\\desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\forms\\manager\\mainmanager.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|solutionrelative:cleanplanetapp\\forms\\manager\\mainmanager.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|c:\\users\\root\\desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|solutionrelative:cleanplanetapp\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\forms\\manager\\mainmanager.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DEB91272-1EBD-4334-B433-472FC651E21C}|cleanplanetapp\\cleanplanetapp.csproj|solutionrelative:cleanplanetapp\\forms\\manager\\mainmanager.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{E696701C-3D39-47E8-9B7B-3D43025DCC9C}|cleanplanetapp.Tests\\cleanplanetapp.Tests.csproj|c:\\users\\root\\desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp.tests\\app.config||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{E696701C-3D39-47E8-9B7B-3D43025DCC9C}|cleanplanetapp.Tests\\cleanplanetapp.Tests.csproj|solutionrelative:cleanplanetapp.tests\\app.config||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,113 +22,49 @@
       "DocumentGroups": [
         {
           "DockedHeight": 325,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Connect.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Connect.xaml.cs",
-              "RelativeDocumentMoniker": "cleanplanetapp\\Forms\\Connect.xaml.cs",
-              "ToolTip": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Connect.xaml.cs",
-              "RelativeToolTip": "cleanplanetapp\\Forms\\Connect.xaml.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAA6wDgAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T11:34:58.7Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MainManager.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Manager\\MainManager.xaml.cs",
-              "RelativeDocumentMoniker": "cleanplanetapp\\Forms\\Manager\\MainManager.xaml.cs",
-              "ToolTip": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Manager\\MainManager.xaml.cs",
-              "RelativeToolTip": "cleanplanetapp\\Forms\\Manager\\MainManager.xaml.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAIwDoAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T06:52:57.262Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Forms\\Manager\\ViewHistory.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Manager\\ViewHistory.xaml.cs",
-              "RelativeDocumentMoniker": "cleanplanetapp\\Forms\\Manager\\ViewHistory.xaml.cs",
-              "ToolTip": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Manager\\ViewHistory.xaml.cs",
-              "RelativeToolTip": "cleanplanetapp\\Forms\\Manager\\ViewHistory.xaml.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAA8AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T08:16:21.155Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ViewHistory.xaml",
-              "DocumentMoniker": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Manager\\ViewHistory.xaml",
-              "RelativeDocumentMoniker": "cleanplanetapp\\Forms\\Manager\\ViewHistory.xaml",
-              "ToolTip": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Manager\\ViewHistory.xaml",
-              "RelativeToolTip": "cleanplanetapp\\Forms\\Manager\\ViewHistory.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-08T08:16:16.783Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PartnerDetails.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Manager\\PartnerDetails.xaml.cs",
-              "RelativeDocumentMoniker": "cleanplanetapp\\Forms\\Manager\\PartnerDetails.xaml.cs",
-              "ToolTip": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Manager\\PartnerDetails.xaml.cs",
-              "RelativeToolTip": "cleanplanetapp\\Forms\\Manager\\PartnerDetails.xaml.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAwwHkAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T07:27:34.744Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PartnerDetails.xaml",
-              "DocumentMoniker": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Manager\\PartnerDetails.xaml",
-              "RelativeDocumentMoniker": "cleanplanetapp\\Forms\\Manager\\PartnerDetails.xaml",
-              "ToolTip": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Manager\\PartnerDetails.xaml",
-              "RelativeToolTip": "cleanplanetapp\\Forms\\Manager\\PartnerDetails.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-08T06:54:10.19Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Models\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "cleanplanetapp\\Models\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Models\\ApplicationDbContext.cs",
-              "RelativeToolTip": "cleanplanetapp\\Models\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAPIAAAAAAAAAAIAywJsBAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T07:57:14.555Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainManager.xaml",
-              "DocumentMoniker": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Manager\\MainManager.xaml",
-              "RelativeDocumentMoniker": "cleanplanetapp\\Forms\\Manager\\MainManager.xaml",
-              "ToolTip": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp\\Forms\\Manager\\MainManager.xaml",
-              "RelativeToolTip": "cleanplanetapp\\Forms\\Manager\\MainManager.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-07T17:52:16.488Z",
+              "DocumentIndex": 1,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp.Tests\\App.config",
+              "RelativeDocumentMoniker": "cleanplanetapp.Tests\\App.config",
+              "ToolTip": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp.Tests\\App.config",
+              "RelativeToolTip": "cleanplanetapp.Tests\\App.config",
+              "ViewState": "AgIAACMAAAAAAAAAAAAswDEAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-10-08T11:23:41.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp.Tests\\App.config",
+              "RelativeDocumentMoniker": "cleanplanetapp.Tests\\App.config",
+              "ToolTip": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp.Tests\\App.config",
+              "RelativeToolTip": "cleanplanetapp.Tests\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-10-08T11:11:54.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "checkSvcFunc.cs",
+              "DocumentMoniker": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp.Tests\\checkSvcFunc.cs",
+              "RelativeDocumentMoniker": "cleanplanetapp.Tests\\checkSvcFunc.cs",
+              "ToolTip": "C:\\Users\\root\\Desktop\\cleanplanet\\cleanplanetapp\\cleanplanetapp.Tests\\checkSvcFunc.cs",
+              "RelativeToolTip": "cleanplanetapp.Tests\\checkSvcFunc.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAmwFwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T11:05:30.06Z",
               "EditorCaption": ""
             }
           ]

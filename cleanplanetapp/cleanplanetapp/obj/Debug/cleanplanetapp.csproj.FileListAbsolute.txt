@@ -47,3 +47,5 @@ C:\Users\root\Desktop\cleanplanet\cleanplanetapp\cleanplanetapp\obj\Debug\cleanp
 C:\Users\root\Desktop\cleanplanet\cleanplanetapp\cleanplanetapp\obj\Debug\cleanplanetapp.pdb
 C:\Users\root\Desktop\cleanplanet\cleanplanetapp\cleanplanetapp\obj\Debug\Forms\Manager\ViewHistory.g.cs
 C:\Users\root\Desktop\cleanplanet\cleanplanetapp\cleanplanetapp\obj\Debug\Forms\Manager\ViewHistory.baml
+C:\Users\root\Desktop\cleanplanet\cleanplanetapp\cleanplanetapp\obj\Debug\Forms\Manager\ViewHistoryOrders.g.cs
+C:\Users\root\Desktop\cleanplanet\cleanplanetapp\cleanplanetapp\obj\Debug\Forms\Manager\ViewHistoryOrders.baml

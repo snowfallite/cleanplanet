@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using cleanplanetapp.Svc;
 
 namespace cleanplanetapp.Forms.Manager
 {
@@ -64,7 +65,7 @@ namespace cleanplanetapp.Forms.Manager
 
             if (result == true)
             {
-                MessageBox.Show("Успешное изменение", "Успех");
+                MessageBox.Show("Успешное изменение", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 await LoadPartnersAsync();
             }
             lbData.SelectedItem = null;
@@ -77,6 +78,7 @@ namespace cleanplanetapp.Forms.Manager
             if (lbData.SelectedItem is Partner selectedPartner)
             {
                 await EditPartner(selectedPartner);
+                
 
             }
         }
@@ -90,7 +92,7 @@ namespace cleanplanetapp.Forms.Manager
 
             if (result == true)
             {
-                MessageBox.Show("Успешное добавление", "Успех");
+                MessageBox.Show("Успешное добавление", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 await LoadPartnersAsync();
             }
             lbData.SelectedItem = null;
@@ -105,7 +107,7 @@ namespace cleanplanetapp.Forms.Manager
                     $"Вы действительно хотите удалить партнёра \"{selectedPartner.Name}\" и всю его историю?",
                     "Подтверждение удаления",
                     MessageBoxButton.YesNo,
-                    MessageBoxImage.Question);
+                    MessageBoxImage.Warning);
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -173,6 +175,11 @@ namespace cleanplanetapp.Forms.Manager
                 }
                 return false;
             };
+
+            int filteredCount = view.Cast<object>().Count();
+            labelItemCount.Content = $"Количество записей: {filteredCount}";
+
+
         }
     }
 }

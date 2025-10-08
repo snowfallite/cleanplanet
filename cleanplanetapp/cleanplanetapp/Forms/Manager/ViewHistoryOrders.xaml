@@ -1,0 +1,60 @@
+﻿<Window x:Class="cleanplanetapp.Forms.Manager.ViewHistoryOrders"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:cleanplanetapp.Forms.Manager"
+        mc:Ignorable="d"
+        Title="Просмотр оказанных услуг" Height="450" Width="800">
+    
+        <Window.Resources>
+            <!-- Шаблон карточки партнёра -->
+            <DataTemplate x:Key="PartnerOrdersHistory">
+
+                <Border BorderBrush="Gray"
+            BorderThickness="1"
+            Margin="5"                     
+        Padding="10"
+            CornerRadius="5"
+            Background="White"
+            HorizontalAlignment="Stretch">
+                    <StackPanel>
+                        <!-- Имя партнёра и сотрудника -->
+                        <TextBlock FontWeight="Bold" FontSize="14" >
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="Услуга : {0}">
+                                    <Binding Path="Service.ServiceName" />
+                                    
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+
+
+                        <TextBlock Margin="0,5,0,0" 
+            Text="{Binding Quantity, StringFormat='Количество: {0}'}" />
+
+
+                        <!-- Дата изменения -->
+                        <TextBlock Margin="0,5,0,0" 
+           Text="{Binding CompletionDate, StringFormat='Дата выполнения: {0:dd.MM.yyyy HH:mm}'}" />
+
+                      
+                    </StackPanel>
+                </Border>
+            </DataTemplate>
+        </Window.Resources>
+        <ListBox x:Name="lbData"
+     ItemsSource="{Binding PartnerOrders}"
+     ItemTemplate="{StaticResource PartnerOrdersHistory}"
+     ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#E0FFFF ">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin"  Value="0"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+
+    
+</Window>

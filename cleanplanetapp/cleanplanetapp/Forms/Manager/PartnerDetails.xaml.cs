@@ -16,7 +16,7 @@ namespace cleanplanetapp.Forms.Manager
             InitializeComponent();
             partner = selectedPartner;
 
-            // Заполняем поля
+     
             labelPartnerID.Content = selectedPartner.PartnerId;
             tbName.Text = selectedPartner.Name;
             tbDirector.Text = selectedPartner.Director;
@@ -27,12 +27,22 @@ namespace cleanplanetapp.Forms.Manager
             tbRating.Text = selectedPartner.Rating.ToString();
             cbPartnerType.ItemsSource = partnerTypes;
             cbPartnerType.SelectedItem = selectedPartner.PartnerType;
+            Title = $"Редактирование партнёра: {selectedPartner.Name}";
 
-            // Проверка наличия истории
-            using (var ctx = new ApplicationDbContext())
+            try
             {
-                var partnerHistory = ctx.PartnersRatingHistory.FirstOrDefault(p => p.PartnerId == partner.PartnerId);
-                btnHistory.IsEnabled = partnerHistory != null;
+             
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var partnerHistory = ctx.PartnersRatingHistory.FirstOrDefault(p => p.PartnerId == partner.PartnerId);
+                    btnHistory.IsEnabled = partnerHistory != null;
+                    var partnerHistoryOrders = ctx.Orders.FirstOrDefault(p => p.PartnerId == partner.PartnerId);
+                    btnHistoryOrders.IsEnabled = partnerHistoryOrders != null;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ошибка при проверке истории партнёра.\n{e.InnerException.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -40,6 +50,7 @@ namespace cleanplanetapp.Forms.Manager
         {
             InitializeComponent();
             btnHistory.IsEnabled = false;
+            btnHistoryOrders.IsEnabled = false;
             cbPartnerType.ItemsSource = partnerTypes;
             cbPartnerType.SelectedIndex = 0;
         }
@@ -50,7 +61,7 @@ namespace cleanplanetapp.Forms.Manager
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    // Проверка всех обязательных полей
+                    
                     if (string.IsNullOrWhiteSpace(tbName.Text))
                     {
                         MessageBox.Show("Введите название партнёра.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -93,7 +104,7 @@ namespace cleanplanetapp.Forms.Manager
                         return;
                     }
 
-                    // Преобразование рейтинга и проверка диапазона
+                  
                     if (!decimal.TryParse(tbRating.Text.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal newRating))
                     {
                         MessageBox.Show("Введите корректное число для рейтинга.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -105,14 +116,14 @@ namespace cleanplanetapp.Forms.Manager
                         return;
                     }
 
-                    // Преобразование комиссии
+                  
                     if (!decimal.TryParse(tbCommission.Text.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal newCommission))
                     {
                         MessageBox.Show("Введите корректное число для комиссии.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
 
-                    // Если новый партнёр
+                 
                     if (partner == null)
                     {
                         var newPartner = new Partner
@@ -130,7 +141,7 @@ namespace cleanplanetapp.Forms.Manager
 
                         ctx.Partners.Add(newPartner);
                     }
-                    else // Обновление существующего
+                    else 
                     {
                         var partnerToUpdate = ctx.Partners.Find(partner.PartnerId);
                         if (partnerToUpdate == null)
@@ -139,7 +150,7 @@ namespace cleanplanetapp.Forms.Manager
                             return;
                         }
 
-                        // Добавление истории при изменении рейтинга
+                       
                         if (partnerToUpdate.Rating != newRating)
                         {
                             var historyRecord = new PartnerRatingHistory
@@ -154,7 +165,7 @@ namespace cleanplanetapp.Forms.Manager
                             ctx.PartnersRatingHistory.Add(historyRecord);
                         }
 
-                        // Обновление всех полей
+                       
                         partnerToUpdate.Name = tbName.Text.Trim();
                         partnerToUpdate.Director = tbDirector.Text.Trim();
                         partnerToUpdate.Email = tbEmail.Text.Trim();
@@ -187,6 +198,19 @@ namespace cleanplanetapp.Forms.Manager
                     WindowStartupLocation = WindowStartupLocation.CenterOwner
                 };
                 viewHistory.ShowDialog();
+            }
+        }
+
+        private void btnHistoryOrders_Click(object sender, RoutedEventArgs e)
+        {
+            if (partner != null)
+            {
+                var viewHistoryOrders = new ViewHistoryOrders(partner.PartnerId)
+                {
+                    Owner = this,
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner
+                };
+                viewHistoryOrders.ShowDialog();
             }
         }
     }

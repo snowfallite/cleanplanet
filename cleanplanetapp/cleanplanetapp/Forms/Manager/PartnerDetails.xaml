@@ -21,10 +21,15 @@
                 <Path Data="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z" Fill="White" Width="16" Height="16" Stretch="Fill"/>
             </StackPanel>
         </Button>
-
+        
         <Button x:Name="btnHistory" Background="#00CED1" Foreground="White" Padding="5" Margin="68,376,0,0" Height="40" VerticalAlignment="Top" Click="btnHistory_Click" HorizontalAlignment="Left" Width="46" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="16">
                 <Path Data="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z" Fill="White" Width="16" Height="16" Stretch="Fill"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnHistoryOrders" Background="#00CED1" Foreground="White" Padding="5" Margin="127,376,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="46" Click="btnHistoryOrders_Click" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="16">
+                <Path Data="M7.75 14A1.75 1.75 0 0 1 6 12.25v-8.5C6 2.784 6.784 2 7.75 2h6.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14Zm-.25-1.75c0 .138.112.25.25.25h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25h-6.5a.25.25 0 0 0-.25.25ZM4.9 3.508a.75.75 0 0 1-.274 1.025.249.249 0 0 0-.126.217v6.5c0 .09.048.173.126.217a.75.75 0 0 1-.752 1.298A1.75 1.75 0 0 1 3 11.25v-6.5c0-.649.353-1.214.874-1.516a.75.75 0 0 1 1.025.274ZM1.625 5.533h.001a.249.249 0 0 0-.126.217v4.5c0 .09.048.173.126.217a.75.75 0 0 1-.752 1.298A1.748 1.748 0 0 1 0 10.25v-4.5a1.748 1.748 0 0 1 .873-1.516.75.75 0 1 1 .752 1.299Z" Fill="White" Width="16" Height="16" Stretch="Fill"/>
             </StackPanel>
         </Button>
         <Label x:Name="labelAddress" Content="Адрес" HorizontalAlignment="Left" Margin="11,254,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
