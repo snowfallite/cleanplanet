@@ -1,74 +1,193 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace cleanplanetapp.Forms.Manager
 {
-    /// <summary>
-    /// Логика взаимодействия для Patner.xaml
-    /// </summary>
     public partial class PartnerDetails : Window
-    {   
+    {
         public Partner partner;
+        public List<string> partnerTypes = new List<string> { "Корпоративный клиент", "Розничный пункт" };
+
         public PartnerDetails(Partner selectedPartner)
         {
             InitializeComponent();
+            partner = selectedPartner;
+
+            // Заполняем поля
             labelPartnerID.Content = selectedPartner.PartnerId;
             tbName.Text = selectedPartner.Name;
-            tbContact.Text = selectedPartner.Contact;
+            tbDirector.Text = selectedPartner.Director;
+            tbEmail.Text = selectedPartner.Email;
+            tbPhone.Text = selectedPartner.Phone;
             tbAddress.Text = selectedPartner.Address;
             tbCommission.Text = selectedPartner.Commission.ToString();
             tbRating.Text = selectedPartner.Rating.ToString();
-            partner = selectedPartner;
-            
+            cbPartnerType.ItemsSource = partnerTypes;
+            cbPartnerType.SelectedItem = selectedPartner.PartnerType;
+
+            // Проверка наличия истории
+            using (var ctx = new ApplicationDbContext())
+            {
+                var partnerHistory = ctx.PartnersRatingHistory.FirstOrDefault(p => p.PartnerId == partner.PartnerId);
+                btnHistory.IsEnabled = partnerHistory != null;
+            }
         }
 
         public PartnerDetails()
         {
             InitializeComponent();
+            btnHistory.IsEnabled = false;
+            cbPartnerType.ItemsSource = partnerTypes;
+            cbPartnerType.SelectedIndex = 0;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
-        {   try
+        {
+            try
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var partnerToUpdate = ctx.Partners.Find(partner.PartnerId);
-                    partnerToUpdate.Name = tbName.Text;
-                    partnerToUpdate.Contact = tbContact.Text;
-                    partnerToUpdate.Address = tbAddress.Text;
-                    partnerToUpdate.Commission = decimal.Parse(tbRating.Text);
-                    partnerToUpdate.Rating = decimal.Parse(tbRating.Text);
+                    // Проверка всех обязательных полей
+                    if (string.IsNullOrWhiteSpace(tbName.Text))
+                    {
+                        MessageBox.Show("Введите название партнёра.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    if (string.IsNullOrWhiteSpace(tbDirector.Text))
+                    {
+                        MessageBox.Show("Введите директора партнёра.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    if (string.IsNullOrWhiteSpace(tbEmail.Text))
+                    {
+                        MessageBox.Show("Введите Email.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    if (string.IsNullOrWhiteSpace(tbPhone.Text))
+                    {
+                        MessageBox.Show("Введите телефон.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                   
+                    if (string.IsNullOrWhiteSpace(tbAddress.Text))
+                    {
+                        MessageBox.Show("Введите адрес.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    if (string.IsNullOrWhiteSpace(tbRating.Text))
+                    {
+                        MessageBox.Show("Введите рейтинг.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    if (string.IsNullOrWhiteSpace(tbCommission.Text))
+                    {
+                        MessageBox.Show("Введите комиссию.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    if (cbPartnerType.SelectedItem == null)
+                    {
+                        MessageBox.Show("Выберите тип партнёра.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    // Преобразование рейтинга и проверка диапазона
+                    if (!decimal.TryParse(tbRating.Text.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal newRating))
+                    {
+                        MessageBox.Show("Введите корректное число для рейтинга.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    if (newRating < 0 || newRating > 5)
+                    {
+                        MessageBox.Show("Рейтинг должен быть от 0 до 5.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    // Преобразование комиссии
+                    if (!decimal.TryParse(tbCommission.Text.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal newCommission))
+                    {
+                        MessageBox.Show("Введите корректное число для комиссии.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    // Если новый партнёр
+                    if (partner == null)
+                    {
+                        var newPartner = new Partner
+                        {
+                            Name = tbName.Text.Trim(),
+                            Director = tbDirector.Text.Trim(),
+                            Email = tbEmail.Text.Trim(),
+                            Phone = tbPhone.Text.Trim(),
+                      
+                            Address = tbAddress.Text.Trim(),
+                            Rating = newRating,
+                            Commission = newCommission,
+                            PartnerType = cbPartnerType.SelectedItem.ToString()
+                        };
+
+                        ctx.Partners.Add(newPartner);
+                    }
+                    else // Обновление существующего
+                    {
+                        var partnerToUpdate = ctx.Partners.Find(partner.PartnerId);
+                        if (partnerToUpdate == null)
+                        {
+                            MessageBox.Show("Партнёр не найден.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
+
+                        // Добавление истории при изменении рейтинга
+                        if (partnerToUpdate.Rating != newRating)
+                        {
+                            var historyRecord = new PartnerRatingHistory
+                            {
+                                PartnerId = partnerToUpdate.PartnerId,
+                                OldRating = partnerToUpdate.Rating,
+                                NewRating = newRating,
+                                ChangedAt = DateTime.Now,
+                                ChangedBy = Session.emp_id,
+                            
+                            };
+                            ctx.PartnersRatingHistory.Add(historyRecord);
+                        }
+
+                        // Обновление всех полей
+                        partnerToUpdate.Name = tbName.Text.Trim();
+                        partnerToUpdate.Director = tbDirector.Text.Trim();
+                        partnerToUpdate.Email = tbEmail.Text.Trim();
+                        partnerToUpdate.Phone = tbPhone.Text.Trim();
+                        partnerToUpdate.Address = tbAddress.Text.Trim();
+                        partnerToUpdate.Rating = newRating;
+                        partnerToUpdate.Commission = newCommission;
+                        partnerToUpdate.PartnerType = cbPartnerType.SelectedItem.ToString();
+                    }
 
                     ctx.SaveChanges();
-
                     DialogResult = true;
                     Close();
-                };
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + " " + ex.InnerException.InnerException.Message);
+                MessageBox.Show(ex.Message + (ex.InnerException != null ? $" {ex.InnerException.Message}" : ""));
             }
-            
         }
+
 
         private void btnHistory_Click(object sender, RoutedEventArgs e)
         {
-
+            if (partner != null)
+            {
+                var viewHistory = new ViewHistory(partner.PartnerId)
+                {
+                    Owner = this,
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner
+                };
+                viewHistory.ShowDialog();
+            }
         }
-
-        
     }
 }

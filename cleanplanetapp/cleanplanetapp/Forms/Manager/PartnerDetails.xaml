@@ -5,32 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:cleanplanetapp.Forms.Manager"
         mc:Ignorable="d"
-        Title="Партнер" Height="350" Width="336" FontFamily="Franklin Gothic Medium" ResizeMode="CanMinimize">
+        Title="Партнер" Height="461" Width="336" FontFamily="Franklin Gothic Medium" ResizeMode="CanMinimize">
     <Grid Margin="0,0,0,-6">
         <Label x:Name="labelIDPartner" Content="ID партнера" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
-        <Label x:Name="labelName" Content="Название" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
-        <Label x:Name="labelContact" Content="Контакт" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
-        <Label Content="Рейтинг" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
-        <TextBox x:Name="tbName" HorizontalAlignment="Left" Margin="108,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14" Height="30"/>
-        <TextBox x:Name="tbContact" HorizontalAlignment="Left" Margin="108,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14" Height="30"/>
-        <TextBox x:Name="tbAddress" HorizontalAlignment="Left" Margin="108,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14" Height="30"/>
+        <Label x:Name="labelName" Content="Название" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
+        <Label x:Name="labelEmail" Content="Почта" HorizontalAlignment="Left" Margin="11,170,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
+        <Label Content="Рейтинг" HorizontalAlignment="Left" Margin="11,337,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
+        <TextBox x:Name="tbName" HorizontalAlignment="Left" Margin="108,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14" Height="30" Background="#E0FFFF "/>
+        <TextBox x:Name="tbEmail" HorizontalAlignment="Left" Margin="109,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14" Height="30" Background="#E0FFFF "/>
+        <TextBox x:Name="tbAddress" HorizontalAlignment="Left" Margin="109,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14" Height="30" Background="#E0FFFF "/>
         <Label x:Name="labelPartnerID" Content="Авто" HorizontalAlignment="Left" Margin="108,10,0,0" VerticalAlignment="Top" Height="26" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14"/>
 
-        <Button x:Name="btnSave" Background="#FF3E3E3E" Foreground="White" Padding="5" Margin="10,255,0,0" Height="40" VerticalAlignment="Top" Click="btnSave_Click" HorizontalAlignment="Left" Width="46" >
+        <Button x:Name="btnSave" Background="#00CED1" Foreground="White" Padding="5" Margin="11,376,0,0" Height="40" VerticalAlignment="Top" Click="btnSave_Click" HorizontalAlignment="Left" Width="46" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="16">
                 <Path Data="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z" Fill="White" Width="16" Height="16" Stretch="Fill"/>
             </StackPanel>
         </Button>
 
-        <Button x:Name="btnHistory" Background="#FF3E3E3E" Foreground="White" Padding="5" Margin="67,255,0,0" Height="40" VerticalAlignment="Top" Click="btnHistory_Click" HorizontalAlignment="Left" Width="46" >
+        <Button x:Name="btnHistory" Background="#00CED1" Foreground="White" Padding="5" Margin="68,376,0,0" Height="40" VerticalAlignment="Top" Click="btnHistory_Click" HorizontalAlignment="Left" Width="46" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="16">
                 <Path Data="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z" Fill="White" Width="16" Height="16" Stretch="Fill"/>
             </StackPanel>
         </Button>
-        <Label x:Name="labelAddress" Content="Адрес" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
-        <Label x:Name="labelCommission" Content="Комиссия" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
-        <TextBox x:Name="tbCommission" HorizontalAlignment="Left" Margin="108,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14" Height="30"/>
-        <TextBox x:Name="tbRating" HorizontalAlignment="Left" Margin="108,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14" Height="30"/>
+        <Label x:Name="labelAddress" Content="Адрес" HorizontalAlignment="Left" Margin="11,254,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
+        <Label x:Name="labelCommission" Content="Комиссия" HorizontalAlignment="Left" Margin="11,295,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
+        <TextBox x:Name="tbCommission" HorizontalAlignment="Left" Margin="109,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14" Height="30" Background="#E0FFFF "/>
+        <TextBox x:Name="tbRating" HorizontalAlignment="Left" Margin="109,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14" Height="30" Background="#E0FFFF  "/>
+        <Label x:Name="labelPartnerType" Content="Тип" HorizontalAlignment="Left" Margin="11,40,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
+        <ComboBox x:Name="cbPartnerType" HorizontalAlignment="Left" Margin="108,39,0,0" VerticalAlignment="Top" Width="189" Height="28">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#E0FFFF " Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Label x:Name="labelDirector" Content="Директор" HorizontalAlignment="Left" Margin="10,128,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
+        <TextBox x:Name="tbDirector" HorizontalAlignment="Left" Margin="108,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14" Height="30" Background="#E0FFFF "/>
+        <Label x:Name="labelPhone" Content="Телефон" HorizontalAlignment="Left" Margin="10,211,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Medium" FontSize="14"/>
+        <TextBox x:Name="tbPhone" HorizontalAlignment="Left" Margin="108,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" FontFamily="Franklin Gothic Medium" FontSize="14" Height="30" Background="#E0FFFF "/>
 
 
     </Grid>

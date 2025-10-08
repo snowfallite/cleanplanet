@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Runtime.Remoting.Contexts;
@@ -15,22 +16,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using cleanplanetapp.Forms.Manager;
+using cleanplanetapp.Svc;
 
 namespace cleanplanetapp.Forms
 {
-    /// <summary>
-    /// Логика взаимодействия для Connect.xaml
-    /// </summary>
-    /// 
-    public static class CurrentUser
+   
+    public static class Session
     {
-        private static string username;
-        private static string name;
-        private static string role;
-     
-        public static string Username { get { return username; }  set { username = value; } }
-        public static string Name { get { return name; } set { name = value; } }
-        public static string Role { get { return role; } set { role = value; } }
+        public static int emp_id {  get; set; }
+        public static string emp_name { get; set; }
+        public static string emp_role { get; set; }
+        
         
     }
 
@@ -44,11 +40,50 @@ namespace cleanplanetapp.Forms
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            
-            CurrentUser.Role = "Менеджер";
-            MainManager main = new MainManager();
-            
-            main.ShowDialog();
+            try
+            {
+                var hash = HashGenerator.ComputeSHA512(pbPassword.Password);
+                string login = tbLogin.Text.Trim();
+                Employee employee;
+                using (var ctx = new ApplicationDbContext())
+                {
+                    employee = ctx.Employees
+                                       .FirstOrDefault(emp =>
+                                            emp.Username == login &&
+                                            emp.PasswordHash == hash);
+
+                    if (employee == null)
+                    {
+                        MessageBox.Show("Неверный логин или пароль",
+                                       "Ошибка авторизации",
+                                       MessageBoxButton.OK,
+                                       MessageBoxImage.Error);
+                        return;
+                    }
+                    Session.emp_id = employee.EmployeeId;
+                    Session.emp_name = employee.FullName;
+                    Session.emp_role = employee.Position.PositionName;
+                }
+                
+                if (employee.Position.PositionName == "Менеджер")
+                {
+                    MainManager main = new MainManager();
+
+                    main.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("У вас нет доступа к этой программе",
+                                    "Ошибка авторизации",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

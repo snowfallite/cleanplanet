@@ -139,12 +139,19 @@ namespace cleanplanetapp
 
             modelBuilder.Entity<Partner>()
                 .Property(p => p.PartnerId).HasColumnName("partner_id");
+
+            modelBuilder.Entity<Partner>()
+                .Property(p => p.PartnerType).HasColumnName("partner_type");
             modelBuilder.Entity<Partner>()
                 .Property(p => p.Name).HasColumnName("name");
             modelBuilder.Entity<Partner>()
+                .Property(p => p.Director).HasColumnName("partner_director");
+            modelBuilder.Entity<Partner>()
                 .Property(p => p.Address).HasColumnName("address");
             modelBuilder.Entity<Partner>()
-                .Property(p => p.Contact).HasColumnName("contact");
+                .Property(p => p.Email).HasColumnName("email");
+            modelBuilder.Entity<Partner>()
+               .Property(p => p.Phone).HasColumnName("phone");
             modelBuilder.Entity<Partner>()
                 .Property(p => p.Commission).HasColumnName("commission");
             modelBuilder.Entity<Partner>()
@@ -336,8 +343,13 @@ namespace cleanplanetapp
         [Key]
         public int PartnerId { get; set; }
         public string Name { get; set; }
+
+        public string Director { get; set; }
+        public string PartnerType { get; set; }
         public string Address { get; set; }
-        public string Contact { get; set; }
+        public string Email { get; set; }
+
+        public string Phone { get; set; }
         public decimal Commission { get; set; }
         public decimal Rating { get; set; }
 
@@ -405,11 +417,16 @@ namespace cleanplanetapp
         public DateTime ChangedAt { get; set; }
         public decimal OldRating { get; set; }
         public decimal NewRating { get; set; }
+
+
         public int ChangedBy { get; set; }
         public string Reason { get; set; }
 
         // Navigation properties
+      
         public virtual Partner Partner { get; set; }
+
+        [ForeignKey(nameof(ChangedBy))]
         public virtual Employee Employee { get; set; }
     }
 }

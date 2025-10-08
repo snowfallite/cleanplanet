@@ -1,14 +1,14 @@
 ﻿<Window x:Class="cleanplanetapp.Forms.Manager.MainManager"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Главная страница"
+        Title="Главная форма"
         Height="450" Width="1019"
         FontFamily="Franklin Gothic Medium">
 
     <Window.Resources>
-        <!-- Шаблон карточки партнёра -->
+
         <DataTemplate x:Key="PartnerCardTemplate">
-            <!-- HorizontalAlignment="Stretch" гарантирует, что Border займет всю ширину ListBoxItem -->
+
             <Border BorderBrush="Gray"
                     BorderThickness="1"
                     Margin="5"                     
@@ -17,10 +17,21 @@
                     Background="White"
                     HorizontalAlignment="Stretch">
                 <StackPanel>
-                    <TextBlock Text="{Binding Name}"
-                               FontWeight="Bold"
-                               FontSize="14"/>
-                    <TextBlock Text="{Binding Contact}"
+
+                    <TextBlock FontWeight="Bold" FontSize="14" >
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat=" {0} | {1}">
+                                <Binding Path="PartnerType" />
+                                <Binding Path="Name" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBlock Margin="0,5,0,0" 
+                                Text="{Binding Director, StringFormat=' Директор: {0}'}" />
+
+                    <TextBlock Margin="0,5,0,0" 
+                                Text="{Binding Phone, StringFormat=' Номер телефона: {0}'}" />
+                    <TextBlock Text="{Binding Rating, StringFormat=' Рейтинг: {0}'}"
                                Margin="0,5,0,0"/>
                 </StackPanel>
             </Border>
@@ -29,49 +40,65 @@
 
     <DockPanel LastChildFill="True">
 
-       
+
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal"
-                    Background="White" Height="50">
+                    Background="#E0FFFF" Height="50">
             <TextBlock Text="CleanPlanet"
                        VerticalAlignment="Center"
                        FontSize="30" FontWeight="Bold"
-                       Margin="10,0"/>
+                       Margin="10,0" Width="166" Foreground="#00CED1"/>
         </StackPanel>
 
-      
-        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"
-                    Background="White" Height="50" VerticalAlignment="Center">
 
-            <!-- Кол‑во записей -->
-            <Label x:Name="labelItemCount" Content="{Binding ItemCount}"
+
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"
+                    Background="#E0FFFF" Height="50" VerticalAlignment="Center">
+
+            <Button x:Name="btnAdd" Background="#00CED1" Foreground="White" Margin="10,0,0,0" Padding="5"  Height="40" Click="btnAdd_Click" Width="46" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="16" Width="16">
+                    <Path Data="M7.9 8.548h-.001a5.528 5.528 0 0 1 3.1 4.659.75.75 0 1 1-1.498.086A4.01 4.01 0 0 0 5.5 9.5a4.01 4.01 0 0 0-4.001 3.793.75.75 0 1 1-1.498-.085 5.527 5.527 0 0 1 3.1-4.66 3.5 3.5 0 1 1 4.799 0ZM13.25 0a.75.75 0 0 1 .75.75V2h1.25a.75.75 0 0 1 0 1.5H14v1.25a.75.75 0 0 1-1.5 0V3.5h-1.25a.75.75 0 0 1 0-1.5h1.25V.75a.75.75 0 0 1 .75-.75ZM5.5 4a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 4Z" Fill="White" Width="16" Height="16" Stretch="Fill"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnEdit" Background="#00CED1" Foreground="White" Margin="10,0,0,0" Padding="5" Height="40" Width="46" Click="btnEdit_Click" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="16">
+                    <Path Data="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z" Fill="White" Width="16" Height="16" Stretch="Fill"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnDelete" Background="#00CED1" Foreground="White" Margin="10,0,0,0" Padding="5" Height="40" Width="46" Click="btnDelete_Click"  >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="16">
+                    <Path Data="M13.25 1c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 15H2.75A1.75 1.75 0 0 1 1 13.25V2.75C1 1.784 1.784 1 2.75 1ZM2.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25Zm8.5 6.25h-6.5a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5Z" Fill="White" Width="16" Height="16" Stretch="Fill"/>
+                </StackPanel>
+            </Button>
+            
+            <Label x:Name="labelItemCount" Margin="10,0,0,0" Content="{Binding ItemCount}"
                    Height="28" Width="250"
                    FontSize="14"/>
 
-            <!-- Текущая роль -->
+
             <Label x:Name="labelInfo" Content="{Binding RoleInfo}"
                    Height="28" Width="180"
-                   FontSize="14" Margin="20,0,0,0"/>
+                   FontSize="14" Margin="10,0,0,0"/>
 
-            <!-- Поиск (можно пока отключить, если не нужен) -->
-            <Label Content="Поиск" Height="28" FontSize="14" Margin="20,0,0,0"/>
+
+            <Label Content="Поиск" Height="28" FontSize="14" Margin="10,0,0,0"/>
             <TextBox x:Name="tbSearch"
-                     Height="24" Width="150"
+                     Height="24" Width="200"
                      FontSize="14"
-                     Margin="5,0,0,0"/>
+                     Margin="5,0,0,0" Background="#00CED1" TextChanged="tbSearch_TextChanged"/>
         </StackPanel>
 
         <Grid>
             <ListBox x:Name="lbData"
                      ItemsSource="{Binding Partners}"
                      ItemTemplate="{StaticResource PartnerCardTemplate}"
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="lbData_MouseDoubleClick">
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="lbData_MouseDoubleClick" Background="White">
 
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                         <Setter Property="Padding" Value="0"/>
-                    <Setter Property="Margin"  Value="0"/>
-                </Style>
+                        <Setter Property="Margin"  Value="0"/>
+                    </Style>
                 </ListBox.ItemContainerStyle>
             </ListBox>
         </Grid>
